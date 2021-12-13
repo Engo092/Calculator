@@ -1,0 +1,96 @@
+body {
+    background-color: rgb(221, 241, 221);
+    text-align: center;
+    display: flex;
+    height: 100vh;
+    min-height: 25em;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    background-color: rgb(141, 141, 141);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    width: 55vh;
+    height: 55vh;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    min-width: 120px;
+    min-height: 120px;
+}
+
+.numbers {
+    margin: 1vh;
+    display: flex;
+    width: 52vh;
+    align-self: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 70px;
+    min-height: 70px;
+}
+
+.number {
+    margin: 0.2vh 0.3vh;
+    width: 12vh;
+    height: 7vh;
+    border-radius: 4px;
+    background-color: beige;
+    font-size: calc(12px + .2vw);
+    min-width: 10px;
+    min-height: 10px;
+}
+
+.display {
+    margin: 3vh;
+    width: 50vh;
+    height: 10vh;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 6vh;
+    background-color: rgb(43, 43, 43);
+    border-radius: 5px;
+    min-width: 80px;
+    min-height: 20px;
+    overflow: hidden;
+}
+
+.displayText {
+    padding: 0 1vh;
+}
+
+.topRow {
+    align-self: center;
+    width: 50vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top {
+    -webkit-text-stroke: 1px gainsboro;
+    color: white;
+    font-size: 4vh;
+    border-radius: 2vh;
+}
+
+.clearButton {
+    background-color: rgb(172, 0, 0);
+    border-color: brown;
+}
+
+.backButton {
+    background-color: rgb(72, 72, 255);
+    border-color: rgb(41, 41, 158);
+}
+
+.factorial, .elevated {
+    -webkit-text-stroke: 1px gray;
+    background-color: black;
+    border-color: dimgray;
+    width: 10vh;
+}

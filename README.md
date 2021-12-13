@@ -1,0 +1,5 @@
+# Calculator Project (Extreme W.I.P)
+
+This is another project from The Odin Project curriculum, being the last of their "Foundations" path. The purpose of this project is to showcase abilities in Javascript and as well as a bit of CSS by creating a functional calculator that not only functions but also looks like a calculator!
+
+As the title of this README suggests, this is a very early W.I.P project, as i have so far only really done the CSS and (probably) all of the HTML portion of the project, in other words, the calculator does not work as of yet, and none of the buttons do anything at all. Its only purpose so far is to showcase the style and layout of the page itself, as it is in its finished state. The script.js file doesn't contain anything functional right now and its contents were created for testing purposes at the start of the project.

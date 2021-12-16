@@ -1,5 +1,7 @@
-# Calculator Project (Extreme W.I.P)
+# Calculator Project (W.I.P)
 
-This is another project from The Odin Project curriculum, being the last of their "Foundations" path. The purpose of this project is to showcase abilities in Javascript and as well as a bit of CSS by creating a functional calculator that not only functions but also looks like a calculator!
+This is yet another project from The Odin Project curriculum, being the last of their "Foundations" path. The purpose of this project is to showcase abilities in Javascript and as well as a bit of CSS by creating a functional calculator that not only functions but also looks like a calculator!
 
-As the title of this README suggests, this is a very early W.I.P project, as i have so far only really done the CSS and (probably) all of the HTML portion of the project, in other words, the calculator does not work as of yet, and none of the buttons do anything at all. Its only purpose so far is to showcase the style and layout of the page itself, as it is in its finished state. The script.js file doesn't contain anything functional right now and its contents were created for testing purposes at the start of the project.
+The calculator in its current state is almost completely functional, it does basic addition, subtraction, multiplication and division; i originally thought that creating a calculator would be easier than it actually was, but there are many different case-scenarios that need to be kept in mind while coding to make sure that the calculator works as intended; this calculator should be working fine as i spent a lot of time fixing bugs and making sure it doesn't break. I first made the HTML and CSS sections of the project, and then moved on to the actual functionality of the calculator, a.k.a the Javascript portion, which was the most time consuming part of the project.
+
+The project isn't fully functional just yet however, the factorial (!) and exponential (^) buttons don't work right now and are currently disabled, and i also plan on adding keyboard support later on, but this feature is not ready right now.

@@ -12,31 +12,32 @@
 
         <div class="calculator">
             <div class="display">
-                <div class="displayText">0+1</div>
+                <div class="displayMath"></div>
+                <div class="displayText">0</div>
             </div>
             <div class="topRow">
-                <button class="top clearButton">Clear</button>
-                <button class="top factorial">!</button>
-                <button class="top elevated">^</button>
-                <button class="top backButton">Delete</button>
+                <button class="top clearButton" onclick="clearDisplay()">Clear</button>
+                <button class="top factorial" onclick="display('!')" disabled>!</button>
+                <button class="top elevated" onclick="display('^')" disabled>^</button>
+                <button class="top backButton" onclick="deleteCharacter()">Delete</button>
             </div>
             <div class="numbers">
-                <button class="number 7">7</button>
-                <button class="number 8">8</button>
-                <button class="number 9">9</button>
-                <button class="number /">/</button>
-                <button class="number 4">4</button>
-                <button class="number 5">5</button>
-                <button class="number 6">6</button>
-                <button class="number *">X</button>
-                <button class="number 1">1</button>
-                <button class="number 2">2</button>
-                <button class="number 3">3</button>
-                <button class="number -">-</button>
-                <button class="number 0">0</button>
-                <button class="number .">.</button>
-                <button class="number =">=</button>
-                <button class="number +">+</button>
+                <button class="number 7" onclick="display('7')">7</button>
+                <button class="number 8" onclick="display('8')">8</button>
+                <button class="number 9" onclick="display('9')">9</button>
+                <button class="number /" onclick="display('/')">/</button>
+                <button class="number 4" onclick="display('4')">4</button>
+                <button class="number 5" onclick="display('5')">5</button>
+                <button class="number 6" onclick="display('6')">6</button>
+                <button class="number *" onclick="display('x')">X</button>
+                <button class="number 1" onclick="display('1')">1</button>
+                <button class="number 2" onclick="display('2')">2</button>
+                <button class="number 3" onclick="display('3')">3</button>
+                <button class="number -" onclick="display('-')">-</button>
+                <button class="number 0" onclick="display('0')">0</button>
+                <button class="number ." onclick="display('.')">.</button>
+                <button class="number =" onclick="calculate()">=</button>
+                <button class="number +" onclick="display('+')">+</button>
             </div>
         </div>
     </body>

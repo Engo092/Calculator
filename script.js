@@ -10,23 +10,18 @@ function keyboardDisplay(e) {
     let key = parseInt(e.key);
     if (!isNaN(key)) {
         display(e.key);
-    }
-    else {
+    } else {
         if (e.key == '+' || e.key == '-' || e.key == '*' || e.key == 'x' || e.key == '/' || e.key == '^' || e.key == '!' || e.key == '.') {
             if (e.key == '*') {
                 display('x');
-            }
-            else {
+            } else {
                 display(e.key);
             }
-        }
-        else if (e.key == 'Enter') {
+        } else if (e.key == 'Enter') {
             calculate();
-        }
-        else if (e.key == 'Backspace' || e.key == 'Delete') {
+        } else if (e.key == 'Backspace' || e.key == 'Delete') {
             deleteCharacter();
-        }
-        else if (e.key == 'Escape') {
+        } else if (e.key == 'Escape') {
             clearDisplay();
         }
     }
@@ -164,8 +159,7 @@ function display(char) {
             if (isNaN(displayText.textContent) || !isFinite(displayText.textContent)) {
                 displayText.textContent = '0';
             }
-        }
-        else {
+        } else {
             clearDisplay();
         }
     }
@@ -187,8 +181,7 @@ function display(char) {
     if (displayText.textContent.toString() == '0') {
         if (char == '+' || char == '/' || char == 'x' || char == '.' || char == '!' || char == '^') {
             displayText.textContent += char;
-        }
-        else {
+        } else {
             displayText.textContent = char;
         }
         
@@ -196,20 +189,20 @@ function display(char) {
     else {
 
         // Prevents operators immediately after another operator
-        if (char == '+' || char == '/' || char == 'x' || char == '.' || char == '^') {
+        if (char == '+' || char == '/' || char == 'x' || char == '.' || char == '^' || char == '!') {
             let len = displayText.textContent.toString().length - 1;
             if (displayText.textContent[len] == '+' || displayText.textContent[len] == '/' || displayText.textContent[len] == 'x' ||
-            displayText.textContent[len] == '.' || displayText.textContent[len] == '^' || displayText.textContent[len] == '-') {
+            displayText.textContent[len] == '.' || displayText.textContent[len] == '^' || displayText.textContent[len] == '-' || displayText.textContent[len-1] == '!') {
                 displayText.textContent = displayText.textContent.slice(0, -1);
-            }
-            else if (char == '!' && displayText.textContent[len] == '!'){
+            } else if (char == '!' && displayText.textContent[len] == '!'){
                 displayText.textContent = displayText.textContent.slice(0, -1);
             }
         }
 
         if (char == '-') {
             let len = displayText.textContent.toString().length - 1;
-            if (displayText.textContent[len] == '-') {
+            if (displayText.textContent[len] == '-' || (displayText.textContent[len-1] == '+' || displayText.textContent[len-1] == '/' || displayText.textContent[len-1] == 'x' ||
+            displayText.textContent[len-1] == '.' || displayText.textContent[len-1] == '^' || displayText.textContent[len-1] == '!') && isNaN(displayText.textContent[len])) {
                 displayText.textContent = displayText.textContent.slice(0, -1);
             }
         }
@@ -246,45 +239,29 @@ function calculate(str = displayText.textContent, initial = true) {
     let operatorFound = false;
     let broke = false;    
     
-    // Following code is for formula display
     if (initial == true) {
-        displayMath.textContent = "";
-        for (let i = 0; i < str.length; i++) {
-            if (str[i] == '+' || str[i] == '-' || str[i] == '/' || str[i] == 'x') {
-                displayMath.textContent += " " + str[i] + " "
-            }
-            else {
-                displayMath.textContent += str[i];
-            }
-        }
-        displayMath.textContent += " =";
+        formulaDisplay(str)
     }
     
     // Deals with operation logic, evaluating numbers in pairs
     for (let i = 0; i < str.length; i++) {
         if (i == 0 && str[i] == '-') {
             n1 += str[i];
-        }
-
-        else if (str[i] == '+' || str[i] == '-' || str[i] == '/' || str[i] == 'x' || str[i] == '^') {
+        } else if (str[i] == '+' || str[i] == '-' || str[i] == '/' || str[i] == 'x' || str[i] == '^') {
             if (str[i] == '-' && str[i-1] == '^' || str[i-1] == '+' || str[i-1] == '-' || str[i-1] == '/' || str[i-1] == 'x') {
                 n2 += str[i];
-            }
-
-            else if (operatorFound == false) {
+            } else if (operatorFound == false) {
                 operator += str[i];
                 numberDone = true;
                 operatorFound = true;
-            }
-            else {
+            } else {
                 if (isNaN(parseInt(n1)) || isNaN(parseInt(n2))) {
                     result = true;
                     displayText.textContent = "NaN";
                     displayMath.textContent = "";
                     broke = true;
                     break;
-                }
-                else {
+                } else {
                     let newNumber1 = operate(n1, operator, n2);
                     let newString = newNumber1 + str.slice(i);
                     calculate(newString, false);
@@ -292,21 +269,17 @@ function calculate(str = displayText.textContent, initial = true) {
                     break;
                 }
             }
-        }
-        else if (numberDone == false) {
+        } else if (numberDone == false) {
             if (str[i] == '!') {
                 console.log(n1);
                 n1 = factor(n1);
-            }
-            else {
+            } else {
                 n1 += str[i];
             }
-        }
-        else {
+        } else {
             if (str[i] == '!') {
                 n2 = factor(n2);
-            }
-            else {
+            } else {
                 n2 += str[i];
             }
         }
@@ -335,7 +308,21 @@ function checkIfValid(char) {
 
 function roundDecimals(int) {
     if (int.toString().length >= 16 && int.toString().includes(".")) {
-        return parseFloat(int.toFixed(8));
+        return parseFloat(int.toFixed(6));
     }
     return int;
+}
+
+
+function formulaDisplay(str) {
+    displayMath.textContent = "";
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] == '+' || str[i] == '-' || str[i] == '/' || str[i] == 'x') {
+            displayMath.textContent += " " + str[i] + " "
+        }
+        else {
+            displayMath.textContent += str[i];
+        }
+    }
+    displayMath.textContent += " =";
 }

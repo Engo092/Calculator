@@ -103,3 +103,39 @@ body {
     margin-right: 2vh;
     font-size: 3.5vh;
 }
+
+@media screen and (max-width: 520px) {
+    .calculator {
+        width: 200px;
+        min-height: 400px;
+        justify-content: start;
+    }
+    
+    .display {
+        width: 180px;
+        height: 50px;
+        margin: 30px;
+        margin-bottom: 30px;
+    }
+
+    .topRow {
+        width: 195px;
+    }
+
+    .top {
+        font-size: large;
+    }
+
+    .factorial, .elevated {
+        width: 50px;
+    }
+
+    .numbers {
+        width: 195px;
+        margin-top: 30px;
+    }
+
+    .number {
+        width: 40px;
+    }
+}
